@@ -6,8 +6,7 @@ from torchvision.models import DenseNet, DenseNet121_Weights
 class FishClassifier(nn.Module):
     def __init__(self, num_classes=3): 
         super(FishClassifier, self).__init__()
-        self.desnet = DenseNet(weights=DenseNet121_Weights.DEFAULT)
-
+        self.desnet = models.densenet121(weights=DenseNet121_Weights.DEFAULT)
         self.desnet.classifier = nn.Sequential(
             nn.Linear(self.desnet.classifier.in_features, 512),
             nn.ReLU(),
